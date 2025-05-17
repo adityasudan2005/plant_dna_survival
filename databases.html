@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-10">
+            <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-800 text-sm font-medium mb-4">
+                Research Data
+            </span>
+            <h2 class="text-3xl font-bold mb-4">Plant Genome Databases</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Download datasets used in our plant genome mutation analysis
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for database in kaggle_databases %}
+            <div class="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-white">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-lg font-semibold">{{ database.title }}</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">{{ database.description }}</p>
+                    <div class="space-y-3">
+                        <a href="{{ database.url }}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm flex items-center">
+                            View Dataset on Kaggle
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                        <a href="{{ database.directDownloadUrl }}" class="inline-flex items-center justify-center w-full bg-green-700 hover:bg-green-800 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors" download>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Download Dataset
+                        </a>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-gray-100">
+                        <div class="flex flex-wrap gap-1">
+                            <span class="badge badge-outline">Plant Genomics</span>
+                            <span class="badge badge-outline">Research Data</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6">About Our Research Databases</h2>
+            <p class="mb-4">
+                Our plant genome databases provide comprehensive genomic data for researchers, plant breeders, and academic institutions. These datasets have been compiled from various research initiatives and are regularly updated to reflect the latest findings in plant genomics.
+            </p>
+            <p class="mb-4">
+                The databases include complete genome sequences, genetic markers, expression data, and annotations for various plant species. They are particularly useful for studies on gene function, evolutionary relationships, and breeding applications.
+            </p>
+            <div class="bg-gray-50 p-6 rounded-lg mt-8">
+                <h3 class="text-lg font-semibold mb-3">Data Usage Guidelines</h3>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>All datasets are provided for research and educational purposes only</li>
+                    <li>Please cite the original sources when using these datasets in publications</li>
+                    <li>Some datasets may have specific usage restrictions - check individual dataset documentation</li>
+                    <li>For commercial applications, contact the original data providers</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 
